@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace phantom_beta
 {
     public partial class Form1 : Form
     {
         public delegate void d1(string indata);
+
         private readonly List<double> _temps = new List<double>();
+
         public static int loops = -1;
 
         public Form1()
         {
             InitializeComponent();
             serialPort1.Open();
+            sampInt.Text = Convert.ToString(timer1.Interval / 1000);
         }
 
         private void heaterCheck_CheckedChanged(object sender, EventArgs e)
@@ -46,32 +51,35 @@ namespace phantom_beta
             }
         }
 
-
-
         public void HeaterOn()
         {
             //heater & fan on - pin 2
             serialPort1.Write("A");
         }
+
         public void HeaterOff()
         {
             //heater & fan off - pin 2
             serialPort1.Write("a");
         }
+
         public void LampsOn()
         {
             //lamps on - pin 4
             serialPort1.Write("B");
         }
+
         public void LampsOff()
         {
             //lamps off - pin 4
             serialPort1.Write("b");
         }
+
         public void BothOn()
         {
             serialPort1.Write("C");
         }
+
         public void BothOff()
         {
             serialPort1.Write("c");
@@ -85,6 +93,7 @@ namespace phantom_beta
         private void startButton_Click(object sender, EventArgs e)
         {
             timer1.Start();
+            timer1.Interval = 1000 * Convert.ToInt32(sampInt.Text);
 
             if (checkBox1.Checked)
             {
@@ -102,10 +111,6 @@ namespace phantom_beta
             }
         }
 
-
-
-        
-
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string indata = serialPort1.ReadLine();
@@ -116,11 +121,6 @@ namespace phantom_beta
         public void Write2Form(string indata)
         {
             textBox1.Text = indata;
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            BothOff();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -146,6 +146,10 @@ namespace phantom_beta
             }
         }
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            BothOff();
+        }
 
     }
 }

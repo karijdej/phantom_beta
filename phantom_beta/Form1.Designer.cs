@@ -37,7 +37,7 @@
             this.startButton = new System.Windows.Forms.Button();
             this.testLength = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.sampInt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -52,7 +52,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(388, 320);
+            this.textBox1.Location = new System.Drawing.Point(408, 206);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 4;
@@ -60,7 +60,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(385, 301);
+            this.label1.Location = new System.Drawing.Point(405, 187);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 16);
             this.label1.TabIndex = 5;
@@ -113,12 +113,13 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Test Length (min)";
             // 
-            // textBox3
+            // sampInt
             // 
-            this.textBox3.Location = new System.Drawing.Point(126, 282);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(67, 22);
-            this.textBox3.TabIndex = 11;
+            this.sampInt.Location = new System.Drawing.Point(126, 282);
+            this.sampInt.Name = "sampInt";
+            this.sampInt.Size = new System.Drawing.Size(67, 22);
+            this.sampInt.TabIndex = 11;
+
             // 
             // label3
             // 
@@ -148,7 +149,7 @@
             // 
             this.heaterCheck.Appearance = System.Windows.Forms.Appearance.Button;
             this.heaterCheck.AutoSize = true;
-            this.heaterCheck.Location = new System.Drawing.Point(399, 208);
+            this.heaterCheck.Location = new System.Drawing.Point(408, 94);
             this.heaterCheck.Name = "heaterCheck";
             this.heaterCheck.Size = new System.Drawing.Size(58, 26);
             this.heaterCheck.TabIndex = 14;
@@ -160,7 +161,7 @@
             // 
             this.lampCheck.Appearance = System.Windows.Forms.Appearance.Button;
             this.lampCheck.AutoSize = true;
-            this.lampCheck.Location = new System.Drawing.Point(399, 240);
+            this.lampCheck.Location = new System.Drawing.Point(408, 128);
             this.lampCheck.Name = "lampCheck";
             this.lampCheck.Size = new System.Drawing.Size(58, 26);
             this.lampCheck.TabIndex = 15;
@@ -177,7 +178,7 @@
             this.Controls.Add(this.heaterCheck);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.sampInt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.testLength);
             this.Controls.Add(this.startButton);
@@ -202,7 +203,7 @@
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.TextBox testLength;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox sampInt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Timer timer1;
