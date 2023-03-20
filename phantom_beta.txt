@@ -1,0 +1,17 @@
+pin 2 = heater
+pin 4 = uv lamps
+
+// initialize temp sensor 
+sensors.begin(); 
+sensors.requestTemperatures(); 
+temperature = sensors.getTempCByIndex(0);
+
+features:
+test mode - select components, set timer, 
+	-print time/temp graph
+	-start/end test
+live temperature monitor graph
+change to toggle buttons 
+standard cure option
+
+
