@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.onButtonH = new System.Windows.Forms.Button();
-            this.offButtonH = new System.Windows.Forms.Button();
-            this.onButtonL = new System.Windows.Forms.Button();
-            this.offButtonL = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -45,6 +41,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.heaterCheck = new System.Windows.Forms.CheckBox();
+            this.lampCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -52,53 +50,9 @@
             this.serialPort1.PortName = "COM6";
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // onButtonH
-            // 
-            this.onButtonH.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onButtonH.Location = new System.Drawing.Point(388, 79);
-            this.onButtonH.Name = "onButtonH";
-            this.onButtonH.Size = new System.Drawing.Size(154, 43);
-            this.onButtonH.TabIndex = 0;
-            this.onButtonH.Text = "Heater ON";
-            this.onButtonH.UseVisualStyleBackColor = true;
-            this.onButtonH.Click += new System.EventHandler(this.onButtonH_Click);
-            // 
-            // offButtonH
-            // 
-            this.offButtonH.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.offButtonH.Location = new System.Drawing.Point(388, 128);
-            this.offButtonH.Name = "offButtonH";
-            this.offButtonH.Size = new System.Drawing.Size(154, 46);
-            this.offButtonH.TabIndex = 1;
-            this.offButtonH.Text = "Heater OFF";
-            this.offButtonH.UseVisualStyleBackColor = true;
-            this.offButtonH.Click += new System.EventHandler(this.offButtonH_Click);
-            // 
-            // onButtonL
-            // 
-            this.onButtonL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.onButtonL.Location = new System.Drawing.Point(559, 79);
-            this.onButtonL.Name = "onButtonL";
-            this.onButtonL.Size = new System.Drawing.Size(154, 43);
-            this.onButtonL.TabIndex = 2;
-            this.onButtonL.Text = "Lamps ON";
-            this.onButtonL.UseVisualStyleBackColor = true;
-            this.onButtonL.Click += new System.EventHandler(this.onButtonL_Click);
-            // 
-            // offButtonL
-            // 
-            this.offButtonL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.offButtonL.Location = new System.Drawing.Point(559, 128);
-            this.offButtonL.Name = "offButtonL";
-            this.offButtonL.Size = new System.Drawing.Size(154, 46);
-            this.offButtonL.TabIndex = 3;
-            this.offButtonL.Text = "Lamps OFF";
-            this.offButtonL.UseVisualStyleBackColor = true;
-            this.offButtonL.Click += new System.EventHandler(this.offButtonL_Click);
-            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(388, 228);
+            this.textBox1.Location = new System.Drawing.Point(388, 320);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 4;
@@ -106,7 +60,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(385, 209);
+            this.label1.Location = new System.Drawing.Point(385, 301);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 16);
             this.label1.TabIndex = 5;
@@ -190,11 +144,37 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // heaterCheck
+            // 
+            this.heaterCheck.Appearance = System.Windows.Forms.Appearance.Button;
+            this.heaterCheck.AutoSize = true;
+            this.heaterCheck.Location = new System.Drawing.Point(399, 208);
+            this.heaterCheck.Name = "heaterCheck";
+            this.heaterCheck.Size = new System.Drawing.Size(58, 26);
+            this.heaterCheck.TabIndex = 14;
+            this.heaterCheck.Text = "Heater";
+            this.heaterCheck.UseVisualStyleBackColor = true;
+            this.heaterCheck.CheckedChanged += new System.EventHandler(this.heaterCheck_CheckedChanged);
+            // 
+            // lampCheck
+            // 
+            this.lampCheck.Appearance = System.Windows.Forms.Appearance.Button;
+            this.lampCheck.AutoSize = true;
+            this.lampCheck.Location = new System.Drawing.Point(399, 240);
+            this.lampCheck.Name = "lampCheck";
+            this.lampCheck.Size = new System.Drawing.Size(58, 26);
+            this.lampCheck.TabIndex = 15;
+            this.lampCheck.Text = "Lamps";
+            this.lampCheck.UseVisualStyleBackColor = true;
+            this.lampCheck.CheckedChanged += new System.EventHandler(this.lampCheck_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lampCheck);
+            this.Controls.Add(this.heaterCheck);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox3);
@@ -205,10 +185,6 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.offButtonL);
-            this.Controls.Add(this.onButtonL);
-            this.Controls.Add(this.offButtonH);
-            this.Controls.Add(this.onButtonH);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -219,10 +195,6 @@
         #endregion
 
         private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.Button onButtonH;
-        private System.Windows.Forms.Button offButtonH;
-        private System.Windows.Forms.Button onButtonL;
-        private System.Windows.Forms.Button offButtonL;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
@@ -234,6 +206,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox heaterCheck;
+        private System.Windows.Forms.CheckBox lampCheck;
     }
 }
 

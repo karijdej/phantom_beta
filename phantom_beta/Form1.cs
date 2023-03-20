@@ -22,29 +22,31 @@ namespace phantom_beta
             serialPort1.Open();
         }
 
-        private void onButtonH_Click(object sender, EventArgs e)
+        private void heaterCheck_CheckedChanged(object sender, EventArgs e)
         {
-            //heater & fan on - pin 2
-            HeaterOn();
+            if (heaterCheck.Checked)
+            {
+                HeaterOn();
+            }
+            else
+            {
+                HeaterOff();
+            }
         }
 
-        private void offButtonH_Click(object sender, EventArgs e)
+        private void lampCheck_CheckedChanged(object sender, EventArgs e)
         {
-            //heater & fan off
-            HeaterOff();
+            if (lampCheck.Checked)
+            {
+                LampsOn();
+            }
+            else
+            {
+                LampsOff();
+            }
         }
 
-        private void onButtonL_Click(object sender, EventArgs e)
-        {
-            //lamps on - pin 4
-            LampsOn();
-        }
 
-        private void offButtonL_Click(object sender, EventArgs e)
-        {
-            //lamps off
-            LampsOff();
-        }
 
         public void HeaterOn()
         {
@@ -142,7 +144,7 @@ namespace phantom_beta
                 System.Diagnostics.Debug.WriteLine(current_temp);
                 //File.WriteAllText("C:\\Users\\Dennis\\Documents\\Phantom\\cs_data\\data.csv", _temps.ToString());
             }
-        }     
+        }
 
 
     }
