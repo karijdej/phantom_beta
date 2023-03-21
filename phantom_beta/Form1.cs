@@ -16,7 +16,7 @@ namespace phantom_beta
     {
         public delegate void d1(string indata);
 
-        private readonly List<double> _temps = new List<double>();
+        private List<string> _temps = new List<string>();
 
         public static int loops = -1;
 
@@ -85,7 +85,7 @@ namespace phantom_beta
             serialPort1.Write("c");
         }
 
-        public double readTemp()
+        public double ReadTemp()
         {
             return Convert.ToDouble(textBox1.Text);
         }
@@ -109,6 +109,11 @@ namespace phantom_beta
             {
                 BothOn();
             }
+
+            double current_temp = ReadTemp();
+            string current_tempS = Convert.ToString(current_temp);
+
+            _temps.Add(current_tempS);
         }
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
@@ -125,13 +130,15 @@ namespace phantom_beta
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            double current_temp = readTemp();
-            _temps.Add(current_temp);
+            double current_temp = ReadTemp();
+            string current_tempS = Convert.ToString(current_temp);
+            _temps.Add(current_tempS);
+            
 
             int length = Convert.ToInt32(testLength.Text);
             int ticks = length;
             loops++;
-
+         
             ticks--;
             testLength.Text = ticks.ToString();
 
@@ -141,8 +148,9 @@ namespace phantom_beta
             {
                 timer1.Stop();
                 BothOff();
-                System.Diagnostics.Debug.WriteLine(current_temp);
-                //File.WriteAllText("C:\\Users\\Dennis\\Documents\\Phantom\\cs_data\\data.csv", _temps.ToString());
+                System.Diagnostics.Debug.WriteLine(current_temp);            
+                string csv = String.Join(",", _temps);
+                File.WriteAllText("C:\\Users\\Dennis\\Documents\\Phantom\\cs_data\\data.csv", csv);
             }
         }
 

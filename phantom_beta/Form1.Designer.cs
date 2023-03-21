@@ -119,7 +119,6 @@
             this.sampInt.Name = "sampInt";
             this.sampInt.Size = new System.Drawing.Size(67, 22);
             this.sampInt.TabIndex = 11;
-
             // 
             // label3
             // 
@@ -142,7 +141,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // heaterCheck
