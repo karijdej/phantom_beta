@@ -47,7 +47,7 @@
             // 
             // serialPort1
             // 
-            this.serialPort1.PortName = "COM6";
+            this.serialPort1.PortName = "COM7";
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // textBox1
