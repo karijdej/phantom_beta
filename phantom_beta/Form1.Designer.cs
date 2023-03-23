@@ -43,11 +43,12 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.heaterCheck = new System.Windows.Forms.CheckBox();
             this.lampCheck = new System.Windows.Forms.CheckBox();
+            this.offButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // serialPort1
             // 
-            this.serialPort1.PortName = "COM7";
+            this.serialPort1.PortName = "COM6";
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // textBox1
@@ -168,11 +169,22 @@
             this.lampCheck.UseVisualStyleBackColor = true;
             this.lampCheck.CheckedChanged += new System.EventHandler(this.lampCheck_CheckedChanged);
             // 
+            // offButton
+            // 
+            this.offButton.Location = new System.Drawing.Point(408, 65);
+            this.offButton.Name = "offButton";
+            this.offButton.Size = new System.Drawing.Size(75, 23);
+            this.offButton.TabIndex = 16;
+            this.offButton.Text = "All Off";
+            this.offButton.UseVisualStyleBackColor = true;
+            this.offButton.Click += new System.EventHandler(this.offButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.offButton);
             this.Controls.Add(this.lampCheck);
             this.Controls.Add(this.heaterCheck);
             this.Controls.Add(this.checkBox3);
@@ -186,7 +198,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,6 +219,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.CheckBox heaterCheck;
         private System.Windows.Forms.CheckBox lampCheck;
+        private System.Windows.Forms.Button offButton;
     }
 }
 

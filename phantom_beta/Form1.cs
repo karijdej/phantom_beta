@@ -116,6 +116,11 @@ namespace phantom_beta
             _temps.Add(current_tempS);
         }
 
+        private void offButton_Click(object sender, EventArgs e)
+        {
+            BothOff();
+        }
+
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string indata = serialPort1.ReadLine();
@@ -158,6 +163,6 @@ namespace phantom_beta
         {
             BothOff();
         }
-
+       
     }
 }
